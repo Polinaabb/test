@@ -1,0 +1,6 @@
+.profile__menu_photos-icon {
+    background-image: url(/src/images/photos-icon.svg);
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 22px;
+}

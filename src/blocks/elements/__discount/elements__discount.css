@@ -1,0 +1,15 @@
+.elements__discount {
+    font-family: Ubuntu;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    text-align: center;
+    padding-left: 11px;
+    color: rgba(255, 207, 45, 1);
+    text-shadow:
+        -0.5px -0.5px 0 white,
+        0.5px -0.5px 0 white,
+        -0.5px 0.5px 0 white,
+        0.5px 0.5px 0 white;
+}
+

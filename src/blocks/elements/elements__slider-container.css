@@ -1,0 +1,6 @@
+.elements__slider-container {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+    padding: 20px 0;
+}

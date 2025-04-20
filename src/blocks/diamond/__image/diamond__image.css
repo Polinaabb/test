@@ -1,0 +1,25 @@
+.diamond__image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background: url(../../../images/diamond.svg);
+    background-repeat: no-repeat;
+    width: 129px;
+    height: 107px;
+    background-size: contain;
+    background-position: center;
+}
+
+.diamond__image:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 600px) {
+    .diamond__image {
+        width: 81px;
+        height: 67px;
+        top: 60%;
+    }
+}

@@ -1,0 +1,57 @@
+.elements__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 123px;
+    background-color: rgba(149, 100, 170, 0.1);
+    border-radius: 10px;
+    border: 2px solid rgba(149, 100, 170, 1);
+    box-sizing: border-box;
+}
+
+.elements__card:last-child {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 41px;
+    max-height: 74px;
+    background-color: #AA646433;
+    border: 2px solid rgba(170, 100, 100, 1);
+    margin: 0;
+}
+
+.elements__button:hover {
+    background-color: #FFCF2D;
+    color: #000000;
+}
+
+.elements__card:has(.elements__button:hover) {
+    background-color: #9564AA;
+}
+
+.elements__card:hover .elements__card_offer-text {
+    opacity: 1;
+    height: 23px;
+}
+
+@media screen and (max-width: 600px) {
+    .elements__card {
+        background-color: #9564AA;
+        color: #FFFFFF;
+        flex: 0 0 260px;
+        scroll-snap-align: center;
+        height: 59px;
+        margin: 0;
+        will-change: transform;
+    }
+
+    .elements__card:last-child {
+        height: 59px;
+        background-color: #9564AA;
+        border: none
+    }
+}

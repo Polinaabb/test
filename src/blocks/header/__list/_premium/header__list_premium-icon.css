@@ -1,0 +1,7 @@
+.header__list_premium-icon {
+    background-image: url('/src/images/premium-icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 15px;
+}

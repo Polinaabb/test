@@ -1,0 +1,6 @@
+.profile__menu_guests-icon {
+    background-image: url(/src/images/guests-icon.svg);
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 22px;
+}

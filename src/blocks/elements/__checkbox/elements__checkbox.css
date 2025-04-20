@@ -1,0 +1,4 @@
+.elements__checkbox {
+    display: flex;
+    flex-direction: row;
+}

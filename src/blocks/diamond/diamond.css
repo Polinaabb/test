@@ -1,0 +1,14 @@
+.diamond {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+    .diamond {
+        display: flex;
+        flex-direction: column;
+        position: static;
+    }
+}

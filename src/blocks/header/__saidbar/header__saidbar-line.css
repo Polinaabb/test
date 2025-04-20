@@ -1,0 +1,7 @@
+.header__saidbar-line {
+    background-image: url(../../../images/saidbar.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 4px;
+}

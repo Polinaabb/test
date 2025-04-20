@@ -1,0 +1,12 @@
+.header__saidbar {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background-size: contain;
+}
+
+@media screen and (max-width: 600px) {
+    .header__saidbar {
+        display: flex;
+    }
+}

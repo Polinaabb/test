@@ -1,0 +1,19 @@
+.diamond__menu_like-icon {
+    background-image: url(../../../../images/like.svg);
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 25px;
+}
+
+.diamond__menu_like-icon:hover {
+    background-color: #FFCF2D;
+}
+
+@media screen and (max-width: 600px) {
+    .diamond__menu_like-icon {
+        width: 30px;
+        height: 30px;
+    }
+}

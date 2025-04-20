@@ -1,0 +1,6 @@
+.profile__menu_out-icon {
+    background-image: url(/src/images/out-icon.svg);
+    background-repeat: no-repeat;
+    width: 22px;
+    height: 22px;
+}

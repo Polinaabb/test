@@ -1,0 +1,14 @@
+.header__diamond {
+    display: none;
+    background-image: url(../../../images/premium-icon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+@media screen and (max-width: 600px) {
+    .header__diamond {
+        display: block;
+    }
+}

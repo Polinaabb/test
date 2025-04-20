@@ -1,0 +1,9 @@
+.elements__timer_separator {
+    font-family: Ubuntu;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 100%;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}

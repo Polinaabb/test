@@ -1,0 +1,20 @@
+.elements__checkbox_button {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(149, 100, 170, 1);
+    border: none;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.elements__checkbox_button.active {
+    background-image: url(../../../../images/done-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+}
+
+.elements__checkbox_button:hover {
+    opacity: 0.8;
+}

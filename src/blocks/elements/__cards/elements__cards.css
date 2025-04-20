@@ -1,0 +1,27 @@
+.elements__cards {
+    width: 100%;
+    max-width: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, auto));
+    gap: 30px;
+    margin-top: 12px;
+    min-height: 200px;
+    padding-top: 14px;
+}
+
+.elements__cards::-webkit-scrollbar {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .elements__cards {
+        grid-template-columns: none;
+        display: flex;
+        gap: 15px;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        margin-top: 0; 
+        padding-top: 0;
+    }
+}
+

@@ -1,0 +1,18 @@
+.header__list_premium {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    color: #FFCF2D;
+    background-color: #684677;
+    border-radius: 10px;
+    line-height: 2;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+@media screen and (max-width: 600px) {
+    .header__list_premium {
+        display: none;
+    }
+}

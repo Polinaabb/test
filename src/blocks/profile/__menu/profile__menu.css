@@ -1,0 +1,34 @@
+.profile__menu{
+    max-width: 232px;
+    border-top: 2px solid rgba(149, 100, 170, 0.2);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-top: 21px;
+}
+
+@media screen and (max-width: 1200px) {
+    .profile__menu {
+      width: 215px;
+    }
+  }
+
+  @media screen and (max-width: 1165px) {
+    .profile__menu {
+      width: 190px;
+    }
+  }
+
+  @media screen and (max-width: 1130px) {
+    .profile__menu {
+      width: 170px;
+    }
+  }
+
+  @media screen and (max-width: 1120px) {
+    .profile__menu {
+      width: 150px;
+    }
+  }
+

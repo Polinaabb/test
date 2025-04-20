@@ -1,0 +1,24 @@
+@media screen and (max-width: 600px) {
+
+    .slider-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #9564AA;
+        opacity: 0.3;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: opacity 0.3s;
+    }
+
+    .slider-dot.active {
+        background: rgba(149, 100, 170, 1);
+        transform: scale(1.2);
+    }
+
+    .slider-dot:hover {
+        background: #FFC500;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,7 @@
+
+@media screen and (max-width: 600px) {
+  .elements__slider-container {
+    width: 100%;
+    position: relative;
+  }
+}

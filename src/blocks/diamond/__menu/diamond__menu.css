@@ -1,0 +1,44 @@
+.diamond__menu {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.diamond__menu li {
+  max-width: 108px;
+  font-family: Ubuntu;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;
+  color: rgba(149, 100, 170, 1);
+  white-space: normal;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  transform-origin: center;
+}
+
+@media screen and (max-width: 600px) {
+  .diamond__menu {
+    display: flex;
+    flex-direction: column;
+    top: 35%;
+    left: 40%;
+  }
+
+  .diamond__menu li {
+    position: static;
+    flex-direction: row;
+    max-width: 280px;
+    gap: 10px;
+    text-align: left;
+  }
+}

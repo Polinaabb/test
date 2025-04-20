@@ -1,0 +1,13 @@
+.profile__provider {
+    font-family: Ubuntu;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 100%;
+    background-color: #684677;
+    border-radius: 5px;
+    line-height: 2;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
