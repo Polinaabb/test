@@ -56,13 +56,28 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
-  const cardStyle = window.getComputedStyle(cards[0]);
-  const cardWidth = cards[0].offsetWidth + parseInt(cardStyle.marginLeft) + parseInt(cardStyle.marginRight);
-  const containerWidth = sliderContainer.offsetWidth;
-  const centerOffset = (containerWidth - cardWidth) / 2;
-  const maxScroll = slider.scrollWidth - containerWidth;
+  cards.forEach(card => {
+    card.style.opacity = '1';
+    card.style.pointerEvents = 'auto';
+    card.style.transform = 'scale(1)';
+  });
 
-  // Точки навигации
+  function calculateDimensions() {
+    const card = cards[0];
+    const cardStyle = window.getComputedStyle(card);
+    const cardWidth = card.offsetWidth + 
+                     parseInt(cardStyle.marginLeft) + 
+                     parseInt(cardStyle.marginRight);
+    
+    const containerWidth = sliderContainer.offsetWidth;
+    const centerOffset = Math.max(0, (containerWidth - cardWidth) / 2);
+    const maxScroll = slider.scrollWidth - containerWidth;
+    
+    return { cardWidth, containerWidth, centerOffset, maxScroll };
+  }
+
+  let dimensions = calculateDimensions();
+
   const dotsContainer = document.createElement('div');
   dotsContainer.className = 'slider-dots';
   sliderContainer.appendChild(dotsContainer);
@@ -73,87 +88,115 @@ document.addEventListener('DOMContentLoaded', function() {
     if (index === 0) dot.classList.add('active');
     
     dot.addEventListener('click', () => {
-      let scrollTo = index * cardWidth - centerOffset;
-      scrollTo = Math.min(Math.max(0, scrollTo), maxScroll);
+      dimensions = calculateDimensions();
+      const scrollTo = Math.min(
+        index * dimensions.cardWidth - dimensions.centerOffset,
+        dimensions.maxScroll
+      );
       
       slider.scrollTo({
         left: scrollTo,
         behavior: 'smooth'
       });
-      
-      setTimeout(updateSlider, 500);
     });
     
     dotsContainer.appendChild(dot);
   });
 
-  function checkScreenSize() {
-    return window.innerWidth <= 600;
+  function getActiveCardIndex() {
+    dimensions = calculateDimensions();
+    const scrollLeft = slider.scrollLeft;
+
+    if (scrollLeft >= dimensions.maxScroll - 10) {
+      return cards.length - 1;
+    }
+
+    return Math.min(
+      Math.round((scrollLeft + dimensions.centerOffset) / dimensions.cardWidth),
+      cards.length - 1
+    );
   }
 
   function updateSlider() {
-    if (!checkScreenSize()) {
+    if (!isMobileView()) {
       cards.forEach(card => {
         card.style.opacity = '1';
+        card.style.pointerEvents = 'auto';
         card.style.transform = 'scale(1)';
       });
       return;
     }
     
-    const scrollLeft = slider.scrollLeft;
-    let activeIndex;
-   
-    if (scrollLeft >= maxScroll - 10) {
-      activeIndex = cards.length - 1;
-    } else {
-      activeIndex = Math.round((scrollLeft + centerOffset) / cardWidth);
-      activeIndex = Math.min(activeIndex, cards.length - 1);
-    }
+    const activeIndex = getActiveCardIndex();
 
     document.querySelectorAll('.slider-dot').forEach((dot, index) => {
       dot.classList.toggle('active', index === activeIndex);
     });
     
     cards.forEach((card, index) => {
-      if (index === activeIndex) {
-        card.style.opacity = '1';
-        card.style.transform = 'scale(1)';
-      } else {
-        card.style.opacity = '0';  
-        card.style.transform = 'scale(0.85)';
-      }
+      const isActive = index === activeIndex;
+      card.style.opacity = isActive ? '1' : '0';
+      card.style.pointerEvents = 'auto';
+      card.style.transform = isActive ? 'scale(1)' : 'scale(0.95)';
+      card.style.transition = 'all 0.3s ease';
     });
   }
 
-  let isScrolling;
+  cards.forEach((card, index) => {
+    card.addEventListener('click', function(e) {
+      if (parseFloat(this.style.opacity) < 1) {
+        dimensions = calculateDimensions();
+        const scrollTo = Math.min(
+          index * dimensions.cardWidth - dimensions.centerOffset,
+          dimensions.maxScroll
+        );
+        
+        slider.scrollTo({
+          left: scrollTo,
+          behavior: 'smooth'
+        });
+        e.preventDefault();
+      }
+    });
+  });
+
+  let scrollTimeout;
   slider.addEventListener('scroll', () => {
-    if (!checkScreenSize()) return;
+    if (!isMobileView()) return;
     
-    clearTimeout(isScrolling);
-    isScrolling = setTimeout(() => {
-      updateSlider();
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      requestAnimationFrame(updateSlider);
     }, 100);
   });
 
-  window.addEventListener('resize', () => {
-    if (checkScreenSize()) {
+  function isMobileView() {
+    return window.innerWidth <= 768;
+  }
+
+  function handleResize() {
+    dimensions = calculateDimensions();
+    
+    if (isMobileView()) {
       slider.style.overflowX = 'auto';
+      slider.style.scrollSnapType = 'x mandatory';
       updateSlider();
     } else {
       slider.style.overflowX = 'hidden';
+      slider.style.scrollSnapType = 'none';
       cards.forEach(card => {
         card.style.opacity = '1';
+        card.style.pointerEvents = 'auto';
         card.style.transform = 'none';
       });
     }
-  });
-
-  if (checkScreenSize()) {
-    slider.style.overflowX = 'auto';
-    slider.scrollTo({
-      left: 0,
-      behavior: 'auto'
-    });
   }
-  updateSlider();
+
+  window.addEventListener('resize', handleResize);
+  
+  handleResize();
+  setTimeout(() => {
+    slider.scrollTo({ left: 0, behavior: 'auto' });
+    updateSlider();
+  }, 150);
 });
