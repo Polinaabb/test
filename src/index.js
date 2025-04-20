@@ -1,4 +1,4 @@
-import "../src/pages/index.css";
+import "./pages/index.css";
 
 document.addEventListener('DOMContentLoaded', function () {
   const hoursElement = document.querySelector('.elements__timer_hours');
